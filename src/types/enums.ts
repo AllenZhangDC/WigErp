@@ -32,3 +32,6 @@ export const QualityStatus = {
     defective: "defective",
     refurbished: "refurbished"
 } as const;
+
+export type UserRole = "admin" | "manager" | "warehouse";
+export const UserRole = { admin: "admin", manager: "manager", warehouse: "warehouse" } as const;

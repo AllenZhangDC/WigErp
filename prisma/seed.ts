@@ -1,8 +1,6 @@
-import { PrismaClient, UserRole, MaterialType, CraftType, CurlPattern, PriceMode, CustomerTier } from '@prisma/client'
+import { prisma } from '../src/lib/prisma'
+import { UserRole, MaterialType, CraftType, CurlPattern, PriceMode, CustomerTier } from '../src/types/enums'
 import { hash } from 'bcryptjs'
-
-const prisma = new PrismaClient()
-
 async function main() {
     process.stdout.write('\x1b[36m🌱 Seeding database...\x1b[0m\n')
 
