@@ -56,7 +56,7 @@ export default async function CustomersPage({
                 </div>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {customers.map((customer) => {
+                    {customers.map((customer: any) => {
                         const isOverCredit = customer.credit_limit && Number(customer.receivable_amt) > Number(customer.credit_limit);
 
                         return (
