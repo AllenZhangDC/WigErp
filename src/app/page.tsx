@@ -20,6 +20,8 @@ import { prisma } from "@/lib/prisma";
 import { formatCurrency, formatDate } from "@/lib/utils";
 import { getStockHistory } from "@/actions/stock.actions";
 
+export const dynamic = 'force-dynamic';
+
 async function getDashboardStats() {
   const [productCount, variantCount, totalStock, totalAR] = await Promise.all([
     prisma.product.count({ where: { deleted_at: null } }),
