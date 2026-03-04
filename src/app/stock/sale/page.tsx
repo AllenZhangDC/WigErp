@@ -142,8 +142,8 @@ export default function SalesOutPage() {
             }))
         });
 
-        if (res.error) {
-            setError(res.error);
+        if ('error' in res) {
+            setError(res.error as string);
             setIsSaving(false);
         } else {
             setSuccess(true);

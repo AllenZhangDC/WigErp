@@ -21,9 +21,9 @@ export default function CreateProductPage() {
         setIsSaving(true); setError(null);
         try {
             const prodResult = await createProduct(productData);
-            if (prodResult.error) { setError(prodResult.error); setIsSaving(false); return; }
-            const varResult = await createVariantsBatch(prodResult.id!, variants);
-            if (varResult.error) { setError(varResult.error); setIsSaving(false); return; }
+            if ('error' in prodResult) { setError(prodResult.error as string); setIsSaving(false); return; }
+            const varResult = await createVariantsBatch(prodResult.id, variants);
+            if ('error' in varResult) { setError(varResult.error as string); setIsSaving(false); return; }
             router.push(`/products/${prodResult.id}`);
         } catch (e: any) { setError(e.message || "异常"); } finally { setIsSaving(false); }
     };

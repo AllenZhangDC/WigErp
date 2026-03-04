@@ -64,7 +64,7 @@ export default async function ProductsPage({
                 </div>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {products.map((product) => (
+                    {products.map((product: any) => (
                         <Link key={product.id} href={`/products/${product.id}`} className="group card card-hover p-0 overflow-hidden shadow-xl shadow-black/5 hover:translate-y-[-2px] transition-transform">
                             <div className="aspect-[16/9] w-full bg-slate-800 relative overflow-hidden">
                                 {product.images?.[0] ? (

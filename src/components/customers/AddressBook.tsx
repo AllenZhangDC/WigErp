@@ -16,7 +16,7 @@ export default function AddressBook({ customerId, addresses }: AddressBookProps)
     const handleCreate = async (e: React.FormEvent) => {
         e.preventDefault(); setIsSaving(true); setError(null);
         const result = await createAddress({ ...formData, customer_id: customerId });
-        if (result.error) { setError(result.error); setIsSaving(false); } else {
+        if ('error' in result) { setError(result.error as string); setIsSaving(false); } else {
             setIsAdding(false); setIsSaving(false);
             setFormData({ label: "", recipient_name: "", phone: "", address_line1: "", address_line2: "", city: "", state: "", zip: "", country: "US", is_default: false });
         }
