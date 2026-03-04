@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { Plus, Trash2, Wand2, Check, AlertCircle, Copy, Save, Loader2, ChevronDown, ChevronUp } from "lucide-react";
-import { CurlPattern, CapSize } from "@prisma/client";
+import { CurlPattern, CapSize } from "@/types/enums";
 
 interface VariantPreview {
     sku: string;

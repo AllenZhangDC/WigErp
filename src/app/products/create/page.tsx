@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { ChevronLeft, PackagePlus, LayoutGrid, Info, Loader2, Save } from "lucide-react";
 import Link from "next/link";
 import { createProduct, createVariantsBatch } from "@/actions/product.actions";
-import { MaterialType, CraftType, PriceMode } from "@prisma/client";
+import { MaterialType, CraftType, PriceMode } from "@/types/enums";
 import VariantGenerator from "@/components/products/VariantGenerator";
 
 export default function CreateProductPage() {

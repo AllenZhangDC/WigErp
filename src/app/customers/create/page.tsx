@@ -5,13 +5,13 @@ import { useRouter } from "next/navigation";
 import { ChevronLeft, UserPlus, Building2, Save, Info, Loader2, AlertCircle } from "lucide-react";
 import Link from "next/link";
 import { createCustomer } from "@/actions/customer.actions";
-import { CustomerTier } from "@prisma/client";
+import { CustomerTier } from "@/types/enums";
 
 export default function CreateCustomerPage() {
     const router = useRouter();
     const [isSaving, setIsSaving] = useState(false);
     const [error, setError] = useState<string | null>(null);
-    const [formData, setFormData] = useState({ display_name: "", company_name: "", first_name: "", last_name: "", phone: "", email: "", country: "US", tier: CustomerTier.retail, credit_days: 0, credit_limit: 0 });
+    const [formData, setFormData] = useState<{ display_name: string; company_name: string; first_name: string; last_name: string; phone: string; email: string; country: string; tier: CustomerTier; credit_days: number; credit_limit: number }>({ display_name: "", company_name: "", first_name: "", last_name: "", phone: "", email: "", country: "US", tier: CustomerTier.retail, credit_days: 0, credit_limit: 0 });
 
     const handleSave = async (e: React.FormEvent) => {
         e.preventDefault(); if (!formData.display_name) { setError("请填写显示名称"); return; }
