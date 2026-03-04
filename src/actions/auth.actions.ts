@@ -7,8 +7,8 @@ import { encrypt } from "@/lib/auth-utils";
 import { redirect } from "next/navigation";
 
 export async function login(formData: FormData) {
-    const email = formData.get("email") as string;
-    const password = formData.get("password") as string;
+    const email = (formData.get("email") as string)?.trim();
+    const password = (formData.get("password") as string)?.trim();
 
     if (!email || !password) {
         return { error: "请输入邮箱和密码" };

@@ -17,6 +17,7 @@ import {
     Settings
 } from "lucide-react";
 import { logout } from "@/actions/auth.actions";
+import ThemeToggle from "@/components/layout/ThemeToggle";
 
 import { NAV_GROUPS } from "@/lib/navigation";
 
@@ -67,6 +68,7 @@ export default function Sidebar() {
                     <Settings size={18} className="text-slate-400 group-hover:text-slate-300" />
                     <span className="flex-1 font-medium text-slate-400 group-hover:text-slate-200">系统设置</span>
                 </Link>
+                <ThemeToggle />
                 <button
                     onClick={() => logout()}
                     className="nav-item group w-full text-left"

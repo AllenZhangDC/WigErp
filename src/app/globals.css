@@ -16,6 +16,45 @@
   --selection: rgba(99, 102, 241, 0.3);
 }
 
+.light {
+  /* Override custom vars */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f5f9;
+  --border: #e2e8f0;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+
+  /* Override Tailwind internal colors to invert hardcoded slate colors */
+  --color-slate-950: #f8fafc;
+  /* maps bg-slate-950 to slate-50 */
+  --color-slate-900: #f1f5f9;
+  /* maps bg-slate-900 to slate-100 */
+  --color-slate-800: #e2e8f0;
+  /* maps border-slate-800 to slate-200 */
+  --color-slate-700: #cbd5e1;
+  /* maps slate-700 to slate-300 */
+  --color-slate-600: #94a3b8;
+  /* maps slate-600 to slate-400 */
+  --color-slate-500: #64748b;
+  /* maps slate-500 to slate-500 */
+  --color-slate-400: #475569;
+  /* maps slate-400 to slate-600 */
+  --color-slate-300: #334155;
+  /* maps slate-300 to slate-700 */
+  --color-slate-200: #1e293b;
+  /* maps text-slate-200 to slate-800 */
+  --color-slate-100: #0f172a;
+  /* maps text-slate-100 to slate-900 */
+  --color-slate-50: #020617;
+  /* maps slate-50 to slate-950 */
+
+  --color-white: #0a0a0a;
+  --color-black: #ffffff;
+}
+
 ::selection {
   background: var(--selection);
 }

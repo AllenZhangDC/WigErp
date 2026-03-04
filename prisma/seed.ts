@@ -5,10 +5,10 @@ async function main() {
     process.stdout.write('\x1b[36m🌱 Seeding database...\x1b[0m\n')
 
     // 1. Create Default Admin
-    const adminPassword = await hash('WigErp!admin123', 12)
+    const adminPassword = await hash('Jingjin@2020', 12)
     await prisma.user.upsert({
         where: { email: 'admin@wigerp.com' },
-        update: {},
+        update: { password_hash: adminPassword },
         create: {
             name: 'System Admin',
             email: 'admin@wigerp.com',

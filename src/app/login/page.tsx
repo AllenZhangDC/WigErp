@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import { login } from "@/actions/auth.actions";
-import { LogIn, Mail, Lock, Loader2, LayoutDashboard, Database, ShieldCheck } from "lucide-react";
+import { LogIn, Mail, Lock, Loader2, LayoutDashboard, Database, ShieldCheck, Eye, EyeOff } from "lucide-react";
 
 export default function LoginPage() {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -83,7 +84,7 @@ export default function LoginPage() {
                     </div>
 
                     <div className="space-y-2">
-                        <h3 className="text-3xl font-black tracking-tighter uppercase italic">身份身份验证</h3>
+                        <h3 className="text-3xl font-black tracking-tighter uppercase italic">身份验证</h3>
                         <p className="text-sm text-slate-500 font-medium italic">请输入您的凭据以访问控制面板。</p>
                     </div>
 
@@ -115,12 +116,20 @@ export default function LoginPage() {
                                 <div className="relative group">
                                     <Lock className="absolute left-4 top-3.5 text-slate-600 group-focus-within:text-indigo-500 transition-colors" size={18} />
                                     <input
-                                        type="password"
+                                        type={showPassword ? "text" : "password"}
                                         name="password"
                                         required
                                         placeholder="••••••••"
-                                        className="input h-12 w-full pl-12 input-with-icon bg-slate-900 border-slate-800 focus:border-indigo-600 transition-all font-medium placeholder:text-slate-700"
+                                        className="input h-12 w-full pl-12 pr-12 input-with-icon bg-slate-900 border-slate-800 focus:border-indigo-600 transition-all font-medium placeholder:text-slate-700"
                                     />
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowPassword(!showPassword)}
+                                        className="absolute right-4 top-3.5 text-slate-600 hover:text-indigo-500 transition-colors outline-none"
+                                        tabIndex={-1}
+                                    >
+                                        {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                    </button>
                                 </div>
                             </div>
                         </div>
