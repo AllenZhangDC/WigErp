@@ -20,7 +20,7 @@ import {
 import Link from "next/link";
 import { getVariantsBySku } from "@/actions/product.actions";
 import { getCustomers } from "@/actions/customer.actions";
-import { saleOut } from "@/actions/stock.actions";
+import { createOrder } from "@/actions/order.actions";
 import { formatCurrency } from "@/lib/utils";
 import { getTierSettings } from "@/actions/tier.actions";
 import { CustomerTier } from "@/types/enums";
@@ -103,7 +103,7 @@ export default function SalesOutPage() {
                 product_name: v.product.name,
                 quantity: 1,
                 unit_price: price,
-                stock_available: v.stock,
+                stock_available: v.stock - (v.reserved_stock || 0),
             }
         ]);
         setSearchQuery("");
@@ -133,11 +133,12 @@ export default function SalesOutPage() {
         setIsSaving(true);
         setError(null);
 
-        const res = await saleOut({
+        const res = await createOrder({
             customer_id: selectedCustId,
             items: items.map(i => ({
                 variant_id: i.variant_id,
                 quantity: i.quantity,
+                unit_price: i.unit_price,
             }))
         });
 
@@ -218,7 +219,7 @@ export default function SalesOutPage() {
                                                 </div>
                                                 <div>
                                                     <p className="font-mono text-sm text-slate-300 font-bold">{v.sku}</p>
-                                                    <p className="text-[10px] text-slate-500 font-bold uppercase">{v.product.name} | 库存: {v.stock} pcs</p>
+                                                    <p className="text-[10px] text-slate-500 font-bold uppercase">{v.product.name} | 库存: {v.stock - (v.reserved_stock || 0)} pcs</p>
                                                 </div>
                                             </div>
                                             <div className="text-right">

@@ -52,10 +52,10 @@ export default async function Dashboard() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
           <h1 className="text-4xl font-black text-white tracking-widest leading-none uppercase italic">WigERP Dashboard</h1>
-          <p className="text-slate-500 font-bold uppercase tracking-[0.2em] mt-3 flex items-center gap-2">
+          <div className="text-slate-500 font-bold uppercase tracking-[0.2em] mt-3 flex items-center gap-2">
             <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
             Real-time inventory Status: All Systems Online
-          </p>
+          </div>
         </div>
         <div className="flex gap-4">
           <Link href="/stock/purchase" className="btn btn-primary h-12 px-6 shadow-xl shadow-indigo-600/10">
@@ -129,7 +129,7 @@ export default async function Dashboard() {
                 </tr>
               </thead>
               <tbody>
-                {transactions.map((tx) => (
+                {transactions.map((tx: any) => (
                   <tr key={tx.id} className="border-b border-slate-800/40 hover:bg-slate-800/20 transition-colors group">
                     <td className="px-6 py-4">
                       <span className={`badge uppercase text-[10px] font-black tracking-widest border border-current bg-current/5 px-2.5 py-1 ${tx.quantity > 0 ? "text-emerald-500" : "text-amber-500"
@@ -253,7 +253,7 @@ function ActionCard({ title, desc, href, icon: Icon, color }: {
   return (
     <Link href={href} className="group flex items-center gap-4 p-5 rounded-2xl bg-slate-950 border border-slate-900 hover:border-indigo-500/30 hover:bg-slate-900/40 transition-all shadow-inner">
       <div className={`w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform ${color === 'indigo' ? 'bg-indigo-500/10 text-indigo-400' :
-          color === 'emerald' ? 'bg-emerald-500/10 text-emerald-400' : 'bg-rose-500/10 text-rose-400'
+        color === 'emerald' ? 'bg-emerald-500/10 text-emerald-400' : 'bg-rose-500/10 text-rose-400'
         }`}>
         <Icon size={24} />
       </div>
